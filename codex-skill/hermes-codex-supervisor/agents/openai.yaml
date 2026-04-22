@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hermes Codex Supervisor"
+  short_description: "Take over Codex control-plane work, threads, acceptance, and merge"
+  default_prompt: "Use $hermes-codex-supervisor to take over this Codex campaign: freeze truth, split threads, supervise execution, rerun acceptance, merge results, and only escalate on real blockers."
