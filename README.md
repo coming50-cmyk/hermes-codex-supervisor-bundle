@@ -1,40 +1,80 @@
 # Hermes Codex Supervisor Bundle
 
-This bundle ships two aligned variants of the same supervisor method:
+Hermes Codex Supervisor Bundle packages the same supervisor workflow for two runtimes:
 
-- `codex-skill/` for Codex desktop/local runtime
-- `hermes-runtime-skill/` for Hermes profile runtime
+- `codex-skill/` for Codex desktop or local Codex CLI environments
+- `hermes-runtime-skill/` for Hermes profile-based runtime environments
 
-## Install
+The two variants should stay behaviorally aligned, but they intentionally use different runtime packaging and installer entrypoints.
 
-### Codex
+## Repository Layout
 
-Run:
+```text
+.
+├─ codex-skill/
+│  └─ hermes-codex-supervisor/
+├─ hermes-runtime-skill/
+│  └─ autonomous-ai-agents/
+│     └─ hermes-codex-supervisor/
+└─ scripts/
+   └─ validate_bundle.py
+```
+
+## What This Bundle Is For
+
+Use this bundle when you want Hermes or Codex to take over control-plane work such as:
+
+- freezing project truth before execution
+- splitting work into threads or worktrees
+- supervising multi-thread execution
+- rerunning acceptance before close-out
+- merging results and syncing truth sources
+
+This bundle is not a business project template and does not ship application code, secrets, runtime data, or environment-specific credentials.
+
+## Quick Start
+
+### Install the Codex variant
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\codex-skill\hermes-codex-supervisor\scripts\install-hermes-codex-supervisor.ps1
 ```
 
-### Hermes
-
-Run:
+### Install the Hermes runtime variant
 
 ```powershell
 python .\hermes-runtime-skill\autonomous-ai-agents\hermes-codex-supervisor\scripts\install_skill.py --skills-root <target-skills-root>
 ```
 
-If you omit `--skills-root`, the installer uses its built-in default target.
+If `--skills-root` is omitted, the installer falls back to:
 
-## Validate
+1. `HERMES_SKILLS_ROOT`
+2. `HERMES_HOME/skills`
+3. `~/.hermes/skills`
 
-Run:
+## Validation
+
+Validate the published bundle before distribution:
 
 ```powershell
 python .\scripts\validate_bundle.py --root .
 ```
 
-## Notes
+The validation script checks:
 
-- Both variants should stay semantically aligned.
-- Local installed copies are runtime targets, not source-of-truth.
-- GitHub publication is only complete after remote push succeeds.
+- required `SKILL.md` files
+- required references
+- installer entrypoints
+- frontmatter structure
+
+## Maintenance Rules
+
+- Keep the Codex and Hermes variants semantically aligned.
+- Treat installed copies as runtime targets, not as the long-term source of truth.
+- Publish only from the repository source, not from live runtime directories.
+- Consider a GitHub release complete only after remote push succeeds.
+
+## Language
+
+- English README: `README.md`
+- Chinese README: `README.zh-CN.md`
