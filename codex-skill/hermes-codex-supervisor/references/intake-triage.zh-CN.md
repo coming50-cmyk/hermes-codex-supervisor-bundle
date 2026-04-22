@@ -39,6 +39,15 @@ Hermes should first write a short intake summary with:
 
 Do not dispatch workers until these seven items are explicit.
 
+Before writing that summary, resolve the real objective with this priority:
+
+1. latest explicit user objective
+2. latest accepted phase / active plan / execution pack already frozen
+3. latest concrete unfinished target in project truth
+4. current repository only as a fallback
+
+If the workspace is a skill repo, bundle repo, or packaging repo, do not assume that repo itself is the task target unless the user explicitly said so.
+
 ## 2. Choose the campaign type
 
 Classify the work into one of these buckets:
@@ -50,6 +59,8 @@ Classify the work into one of these buckets:
 - remote hygiene / repo hygiene / deployment support
 
 If the project already has an accepted phase cadence, prefer extending that cadence instead of inventing a floating campaign.
+
+If the user only said `接手` / `继续` / `你来管`, do not bounce the task back with a generic clarification request if a concrete accepted target already exists in the thread or project truth. State the inherited target and move on.
 
 ## 3. Freeze the write locus
 

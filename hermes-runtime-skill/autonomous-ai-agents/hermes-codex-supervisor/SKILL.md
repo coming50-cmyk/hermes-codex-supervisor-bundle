@@ -66,6 +66,39 @@ Then read:
 - `references/release-publish-checklist.md`
 - `references/github-inspirations.md` when you need to compare orchestration patterns instead of improvising one
 
+## Objective resolution rule
+
+Before you say what you are taking over, resolve the target in this priority order:
+
+1. the user's latest explicit concrete goal
+2. the latest accepted phase, execution pack, or active plan already frozen in the thread or project
+3. the latest concrete unfinished target recorded in project truth
+4. only if none of the above exist, the current repository itself
+
+Do not default to "the current repository" just because:
+
+- the workspace is a skill repo
+- the current folder is a GitHub bundle or packaging repo
+- the conversation recently discussed release plumbing
+
+If the user says `接手`, `继续`, `你来管`, or similar handoff language after a long thread, inherit the most recent accepted concrete objective first.
+
+Only ask the user to restate the goal when all of these are true:
+
+- there is no recent explicit objective
+- there is no accepted active plan you can inherit
+- there is no project record pointing to one concrete unfinished target
+
+When you can infer the target from current truth, state the inherited target and continue. Do not bounce the task back with a generic clarification request.
+
+Bad handoff interpretation:
+
+- "当前看的对象是这个 hermes-codex-supervisor-bundle 仓库，所以先问你要拿这个仓库干嘛"
+
+Correct handoff interpretation:
+
+- "我接手的是上一轮已经冻结的具体目标；当前仓库只是工具或交付载体，不自动等于主任务对象"
+
 ## Execution mode
 
 Choose one mode first. Do not improvise thread count later.

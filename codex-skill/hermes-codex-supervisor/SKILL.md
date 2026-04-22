@@ -51,6 +51,7 @@ Hermes should not:
 - silently skip red-line approvals
 - trust a worker summary without checking artifacts
 - confuse planning complete with execution complete
+- mistake the current skill repo or bundle repo for the real user objective
 
 ## Read Order
 
@@ -81,6 +82,39 @@ Then read:
 - [dual-delivery-model.md](references/dual-delivery-model.md)
 - [release-publish-checklist.md](references/release-publish-checklist.md)
 - [github-inspirations.md](references/github-inspirations.md)
+
+## Objective Resolution Rule
+
+Before you say what you are "taking over", resolve the target in this priority order:
+
+1. the user's latest explicit concrete goal
+2. the latest accepted phase / execution pack / active plan already frozen in this thread or project
+3. the latest concrete unfinished task recorded in project truth
+4. only if none of the above exist: the current repository itself
+
+Do not default to "the current repository" just because:
+
+- the workspace is a skill repo
+- the current folder is a GitHub bundle
+- the thread recently discussed packaging or publishing infrastructure
+
+If the user says `接手`, `继续`, `你来管`, or similar handoff language after a long thread, inherit the most recent accepted concrete objective first.
+
+Only ask the user to restate the goal when all of these are true:
+
+- there is no recent explicit objective
+- there is no accepted active plan you can inherit
+- there is no project record pointing to one concrete unfinished target
+
+When you do have enough context to infer the target, state the inferred target and continue. Do not stop to ask the user to re-specify it.
+
+Bad handoff interpretation:
+
+- "当前看的对象是这个 hermes-codex-supervisor-bundle 仓库，所以先问你要拿这个仓库干嘛"
+
+Correct handoff interpretation:
+
+- "我接手的是上一轮已经冻结的具体目标；当前仓库只是工具或交付载体，不自动等于主任务对象"
 
 ## Default Execution Shape
 
