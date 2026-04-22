@@ -37,10 +37,15 @@ def require_paths(paths: list[Path], errors: list[str]) -> None:
             errors.append(f"missing: {path}")
 
 
+def zh_path_for(path: Path) -> Path:
+    return path.with_name(f"{path.stem}.zh-CN{path.suffix}")
+
+
 def validate(root: Path) -> list[str]:
     errors: list[str] = []
 
-    if (root / "codex-skill").exists():
+    is_bundle = (root / "codex-skill").exists()
+    if is_bundle:
         codex_skill = root / "codex-skill" / "hermes-codex-supervisor"
         hermes_category = root / "hermes-runtime-skill" / "autonomous-ai-agents"
         hermes_skill = hermes_category / "hermes-codex-supervisor"
@@ -83,6 +88,20 @@ def validate(root: Path) -> list[str]:
             errors.append(f"unexpected skill name in {skill_path}")
         if not data.get("description"):
             errors.append(f"missing description in {skill_path}")
+
+    if is_bundle:
+        readme = root / "README.md"
+        if readme.exists():
+            readme_text = readme.read_text(encoding="utf-8")
+            if "## 中文" not in readme_text:
+                errors.append("README.md missing inline Chinese section")
+
+        for path in root.rglob("*.md"):
+            if path.name.endswith(".zh-CN.md"):
+                continue
+            zh_path = zh_path_for(path)
+            if not zh_path.exists():
+                errors.append(f"missing zh companion: {zh_path}")
 
     return errors
 

@@ -66,6 +66,7 @@ python .\scripts\validate_bundle.py --root .
 - 必需的 references
 - 安装脚本入口
 - frontmatter 结构
+- 已发布 Markdown 说明是否带中文伴随文档
 
 ## 维护规则
 
