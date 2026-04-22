@@ -64,7 +64,6 @@ Then read:
 - `references/truth-sync-matrix.md`
 - `references/dual-delivery-model.md`
 - `references/release-publish-checklist.md`
-- `references/huajie-adaptation.md` if the active project is `花姐工作助手`
 - `references/github-inspirations.md` when you need to compare orchestration patterns instead of improvising one
 
 ## Execution mode
@@ -304,17 +303,6 @@ If the user asks to publish this skill stack:
 
 If remote URL or auth is missing, stop at a publish-ready local repo and report the exact missing external condition.
 Use `references/release-publish-checklist.md`.
-
-## Project Adaptation
-
-If the active project is `花姐工作助手`, inherit the project-specific rhythm in `references/huajie-adaptation.md`.
-
-That includes:
-
-- reading accepted phase truth before dispatch
-- preserving `P22` and later phase semantics
-- keeping remote-primary / local-mirror rules explicit
-- only making the threads explicitly marked iterative continue after round one
 
 ## Final response shape
 

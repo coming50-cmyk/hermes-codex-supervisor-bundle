@@ -80,7 +80,6 @@ Then read:
 - [truth-sync-matrix.md](references/truth-sync-matrix.md)
 - [dual-delivery-model.md](references/dual-delivery-model.md)
 - [release-publish-checklist.md](references/release-publish-checklist.md)
-- [huajie-adaptation.md](references/huajie-adaptation.md)
 - [github-inspirations.md](references/github-inspirations.md)
 
 ## Default Execution Shape
@@ -305,18 +304,6 @@ If the user asks to publish the supervisor stack:
 
 If remote URL or auth is missing, stop at a publish-ready local repo and report the exact missing external condition.
 Use [release-publish-checklist.md](references/release-publish-checklist.md).
-
-## Project Adaptation
-
-If the active project is `花姐工作助手`, Hermes must additionally inherit the project-specific rhythm documented in [huajie-adaptation.md](references/huajie-adaptation.md).
-
-That includes:
-
-- reading project truth before dispatch
-- preferring accepted phase structure over ad-hoc orchestration
-- preserving `P22/P23+` phase semantics
-- respecting remote-worktree and mirror rules
-- using phase acceptance as the supervisor's preferred rerun surface
 
 ## Final Response Shape
 

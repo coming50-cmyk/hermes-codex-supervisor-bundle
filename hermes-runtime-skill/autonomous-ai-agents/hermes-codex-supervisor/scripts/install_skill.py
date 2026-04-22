@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
 from datetime import datetime
 from pathlib import Path
@@ -11,11 +12,13 @@ CATEGORY_NAME = "autonomous-ai-agents"
 
 
 def detect_default_skills_root() -> Path:
-    local_sidecar = Path(
-        r"D:\a\workspace\4.在途项目\花姐工作助手\.runtime\phase22-hermes-sidecar\profiles\huajie_user_a\skills"
-    )
-    if local_sidecar.exists():
-        return local_sidecar
+    explicit = os.environ.get("HERMES_SKILLS_ROOT")
+    if explicit:
+        return Path(explicit).expanduser()
+
+    hermes_home = os.environ.get("HERMES_HOME")
+    if hermes_home:
+        return Path(hermes_home).expanduser() / "skills"
 
     hermes_home = Path.home() / ".hermes"
     return hermes_home / "skills"
