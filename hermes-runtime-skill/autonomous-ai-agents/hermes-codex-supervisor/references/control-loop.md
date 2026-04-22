@@ -15,6 +15,9 @@ Write a short intake note:
 - execution mode
 - iteration rule
 
+For any main-control step that shapes the plan, thread split, acceptance, or verdict, use extra-high reasoning (`xhigh` where supported).
+If that tier is unavailable, do not finalize the formal plan or verdict yet.
+
 ## 2. Freeze ownership
 
 Every Codex worker must own a bounded write surface.

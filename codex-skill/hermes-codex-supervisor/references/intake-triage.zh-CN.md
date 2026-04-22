@@ -34,11 +34,12 @@ Hermes should first write a short intake summary with:
 - write locus
 - validation surface
 - red lines still in force
+- main-control reasoning tier
 - execution mode
 - iteration mode
 - progress reporting surface
 
-Do not dispatch workers until these eight items are explicit.
+Do not dispatch workers until these nine items are explicit.
 
 Before writing that summary, resolve the real objective with this priority:
 
@@ -129,6 +130,7 @@ After triage, Hermes should be able to hand over:
 - acceptance target
 - progress reporting surface for user-facing updates
 - freshness rule for when Hermes may call something current state
+- explicit main-control reasoning tier for plan and verdict work
 
 If one of these is missing, intake is not done.
 ````

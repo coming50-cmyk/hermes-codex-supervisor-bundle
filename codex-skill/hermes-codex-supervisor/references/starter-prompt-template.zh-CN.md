@@ -47,6 +47,7 @@ Hard red lines:
 Execution request:
 - freeze intake first
 - choose the right execution mode
+- use extra-high reasoning for main-control planning, execution-pack writing, and final acceptance / verdict
 - choose thread count from the actual task instead of hardcoding a fixed split
 - dispatch bounded worker packets
 - keep a supervisor status board
@@ -88,6 +89,7 @@ Read the active AGENTS, workspace PLANS, project PLANS, 项目记录, current ph
 
 Then:
 - freeze intake
+- use extra-high reasoning for the phase plan, thread split, and final verdict
 - inherit accepted phase rhythm
 - split work into bounded threads
 - freeze the reporting surface Hermes must use when the user asks for progress or detail

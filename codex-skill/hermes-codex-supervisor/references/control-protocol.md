@@ -15,6 +15,18 @@ Hermes should first write down:
 
 Then freeze intake using [intake-triage.md](intake-triage.md).
 
+## 1.1 Main-control reasoning rule
+
+Hermes must ensure the main-control Codex session uses extra-high reasoning (`xhigh` where supported) for:
+
+- planning the phase
+- designing the thread split
+- writing the execution pack
+- reviewing acceptance
+- issuing the final verdict
+
+If that reasoning tier is unavailable, stop short of a formal final plan or verdict and fix the control-plane configuration first.
+
 ## 2. Pick the execution mode
 
 - `direct` for one small task

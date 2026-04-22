@@ -40,6 +40,7 @@ Hermes should:
 - understand the goal
 - read the active rules and plans
 - choose the right execution shape
+- use extra-high reasoning for main-control planning, phase design, thread split, acceptance, and final verdict
 - dispatch Codex work
 - track progress
 - report progress back to the user
@@ -55,6 +56,7 @@ Hermes should not:
 - confuse planning complete with execution complete
 - mistake the current skill repo or bundle repo for the real user objective
 - answer user status questions from stale memory alone
+- use low or medium reasoning for main-control planning or final verdict work when extra-high is available
 
 ## Read Order
 
@@ -150,6 +152,23 @@ If the project already has a better accepted split, inherit it instead of forcin
 Use [decision-matrix.md](references/decision-matrix.md) to choose the mode instead of guessing.
 Use [intake-triage.md](references/intake-triage.md) before dispatch so the mode choice, write locus, and iteration rule are frozen first.
 Use [starter-prompt-template.md](references/starter-prompt-template.md) when Hermes needs a copy-ready campaign opener instead of improvising one.
+
+## Main-Control Reasoning Rule
+
+For main-control work, Hermes must use the extra-high reasoning setting (`xhigh` where supported) when doing any of these:
+
+- phase planning
+- execution-pack writing
+- thread-boundary design
+- acceptance review
+- final verdict
+- workflow-rule changes
+
+If `xhigh` is unavailable in the current control-plane environment:
+
+- do not present the plan as a finalized formal execution plan
+- do not issue the final verdict yet
+- record the configuration gap and fix control-plane reasoning first
 
 ## What Hermes Must Produce
 

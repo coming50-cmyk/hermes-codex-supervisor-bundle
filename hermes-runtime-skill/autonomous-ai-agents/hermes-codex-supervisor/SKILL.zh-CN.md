@@ -43,6 +43,7 @@ Use this skill when Hermes should supervise Codex instead of making the user rel
 - Decide the execution shape and thread count from the actual task instead of hardcoding one split
 - Launch Codex workers in separate worktrees or directories
 - Keep a supervisor status board
+- Use extra-high reasoning for main-control planning, phase design, thread split, acceptance, and final verdict
 - Report current progress back to the user
 - Answer progress, direction, and detail questions from current truth instead of stale memory
 - Rerun real validation before closing
@@ -175,6 +176,23 @@ Pick the smallest shape that matches the real coupling and validation needs.
 
 Use `references/intake-triage.md` to freeze campaign type, write locus, thread count, and iteration rule before dispatch.
 Use `references/decision-matrix.md` for verdict choice.
+
+## Main-control reasoning rule
+
+When Hermes is supervising Codex for main-control work, the planning and verdict layer must use the extra-high reasoning setting (`xhigh` where supported) for:
+
+- phase planning
+- execution-pack writing
+- thread-boundary design
+- acceptance review
+- final verdict
+- workflow-rule changes
+
+If `xhigh` is not available:
+
+- do not treat the resulting plan as the final formal execution plan
+- do not issue the final verdict yet
+- record the control-plane configuration gap and fix it first
 
 ## Launch pattern
 
