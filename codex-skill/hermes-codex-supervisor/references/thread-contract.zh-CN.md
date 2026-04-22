@@ -23,7 +23,7 @@ Codex 版：这份文件定义 worker 线程的职责边界、输入输出和不
 ````markdown
 # Thread Contract
 
-Default four-thread split:
+Use this mapping only when a four-thread split is actually justified:
 
 ## Thread A
 

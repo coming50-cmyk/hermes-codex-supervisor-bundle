@@ -47,9 +47,11 @@ Hard red lines:
 Execution request:
 - freeze intake first
 - choose the right execution mode
-- default to four threads unless a smaller or larger split is clearly justified
+- choose thread count from the actual task instead of hardcoding a fixed split
 - dispatch bounded worker packets
 - keep a supervisor status board
+- freeze a reporting surface and keep it fresh enough for user-facing updates
+- answer user questions only from current truth, not memory
 - rerun real acceptance before any final verdict
 - sync plans / records / runbooks that the project method requires
 - only escalate on real blockers or red lines
@@ -88,6 +90,7 @@ Then:
 - freeze intake
 - inherit accepted phase rhythm
 - split work into bounded threads
+- freeze the reporting surface Hermes must use when the user asks for progress or detail
 - supervise until acceptance rerun is green or a true external blocker remains
 - sync phase status, runbook, report, and project record as required
 ```

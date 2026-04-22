@@ -34,6 +34,8 @@ Use this template when Hermes creates a Codex worker task.
 - scripts
 - tests
 - runbook/report updates
+- relay-safe summary Hermes can tell the user
+- evidence basis for that summary
 
 Only list outputs actually needed for that thread.
 
@@ -61,17 +63,21 @@ Do not assume a worker will continue automatically unless the packet says so.
 
 Workers should always end with:
 
-1. what changed
-2. what was run
-3. current result
-4. remaining blockers
-5. most important files
+1. current status
+2. what changed
+3. what was run
+4. current result
+5. relay_safe_summary
+6. evidence_basis
+7. fresh_as_of
+8. remaining blockers
+9. most important files
 
 If the packet is iterative, also include:
 
-6. current round
-7. total round target
-8. whether the next round should start now
+10. current round
+11. total round target
+12. whether the next round should start now
 
 ## Default four-thread packet mapping
 

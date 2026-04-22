@@ -17,6 +17,7 @@ COMMON_REFS = [
     "status-report-contract.md",
     "thread-contract.md",
     "truth-sync-matrix.md",
+    "user-reporting-protocol.md",
 ]
 
 

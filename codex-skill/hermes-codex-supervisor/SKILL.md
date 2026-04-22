@@ -20,7 +20,7 @@ Typical triggers:
 Use it for:
 
 - turning one user goal into a bounded Codex execution campaign
-- default four-thread decomposition
+- dynamic thread decomposition based on the actual task
 - ongoing supervision of multiple Codex workers
 - acceptance-first close-out
 - only escalating to the user on real blockers or red lines
@@ -42,6 +42,8 @@ Hermes should:
 - choose the right execution shape
 - dispatch Codex work
 - track progress
+- report progress back to the user
+- answer progress, direction, and detail questions from current truth
 - re-run verification
 - merge and summarize
 
@@ -52,6 +54,7 @@ Hermes should not:
 - trust a worker summary without checking artifacts
 - confuse planning complete with execution complete
 - mistake the current skill repo or bundle repo for the real user objective
+- answer user status questions from stale memory alone
 
 ## Read Order
 
@@ -73,6 +76,7 @@ Then read:
 - [status-report-contract.md](references/status-report-contract.md)
 - [supervisor-board-template.md](references/supervisor-board-template.md)
 - [campaign-rounds.md](references/campaign-rounds.md)
+- [user-reporting-protocol.md](references/user-reporting-protocol.md)
 - [escalation-boundaries.md](references/escalation-boundaries.md)
 - [decision-matrix.md](references/decision-matrix.md)
 - [worker-packet-template.md](references/worker-packet-template.md)
@@ -116,9 +120,9 @@ Correct handoff interpretation:
 
 - "我接手的是上一轮已经冻结的具体目标；当前仓库只是工具或交付载体，不自动等于主任务对象"
 
-## Default Execution Shape
+## Execution Shape Presets
 
-Choose one of these modes:
+Choose one of these modes. There is no universal default thread count:
 
 1. `direct`
    - one Codex thread
@@ -128,8 +132,7 @@ Choose one of these modes:
    - one validation / acceptance thread
    - use for medium work
 3. `four-thread`
-   - default for substantial project work
-   - this is the preferred mode unless the task is clearly smaller
+   - use when the task naturally splits into truth freeze + two main workstreams + acceptance
 4. `six-thread`
    - only when the project truth already uses six threads
    - or the user explicitly asked for wider parallelism
@@ -232,6 +235,7 @@ Interpretation:
 
 Do not let workers invent their own status vocabulary.
 Use [status-report-contract.md](references/status-report-contract.md) for the worker reply format and the supervisor dashboard fields.
+Use [user-reporting-protocol.md](references/user-reporting-protocol.md) whenever Hermes is answering the user about current progress, direction, detail, blockers, or completion.
 
 ## Escalation Standard
 

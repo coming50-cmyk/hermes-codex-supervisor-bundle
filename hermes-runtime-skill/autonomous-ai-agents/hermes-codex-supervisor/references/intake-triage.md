@@ -13,8 +13,9 @@ Hermes should first write a short intake summary with:
 - red lines still in force
 - execution mode
 - iteration mode
+- progress reporting surface
 
-Do not dispatch workers until these seven items are explicit.
+Do not dispatch workers until these eight items are explicit.
 
 Before writing that summary, resolve the real objective with this priority:
 
@@ -70,16 +71,17 @@ Example:
 
 ## 5. Choose the thread count
 
-Use this default:
+Choose the smallest shape that matches the real task:
 
 - `direct` for small single-surface work
 - `paired` for bounded implementation plus independent verification
-- `four-thread` for substantial project work
+- `four-thread` when the task naturally splits into truth freeze + two main lanes + acceptance
 - `six-thread` only when one of these is true:
   - user explicitly asked for six threads
   - accepted project truth already uses six threads
   - there are three independent implementation lanes plus dedicated acceptance and pack sync
 
+Do not hardcode four-thread or six-thread as the standing rule.
 Do not widen thread count just because parallelism sounds good.
 
 ## 6. Freeze the acceptance surface
@@ -102,5 +104,7 @@ After triage, Hermes should be able to hand over:
 - worker packets
 - supervisor status board
 - acceptance target
+- progress reporting surface for user-facing updates
+- freshness rule for when Hermes may call something current state
 
 If one of these is missing, intake is not done.

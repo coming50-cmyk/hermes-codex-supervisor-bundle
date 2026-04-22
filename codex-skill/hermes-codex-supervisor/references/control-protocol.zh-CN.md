@@ -42,10 +42,11 @@ Then freeze intake using [intake-triage.md](intake-triage.md).
 
 - `direct` for one small task
 - `paired` for medium work
-- `four-thread` by default for substantial work
+- `four-thread` when the task naturally splits into truth freeze + two main lanes + acceptance
 - `six-thread` only when the project truth or user explicitly requires it
 
-Default to `four-thread` unless there is a strong reason not to.
+There is no standing default thread count.
+Pick the smallest shape that matches the real coupling and validation surface.
 
 ## 3. Freeze ownership
 

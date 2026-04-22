@@ -1,6 +1,6 @@
 # Thread Contract
 
-Default four-thread split:
+Use this mapping only when a four-thread split is actually justified:
 
 ## Thread A
 

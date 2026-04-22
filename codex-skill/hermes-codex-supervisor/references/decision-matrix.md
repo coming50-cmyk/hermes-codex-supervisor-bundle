@@ -18,7 +18,7 @@ Choose `paired` when:
 - but independent verification is still important
 - or one thread can build while another prepares acceptance
 
-Choose `four-thread` by default when any are true:
+Choose `four-thread` when any are true:
 
 - multiple modules or directories
 - tests plus docs plus runbook need sync
@@ -34,6 +34,9 @@ Choose `six-thread` only when any are true:
 - there are at least three independent implementation lanes
 - acceptance and pack-sync need to proceed in parallel with implementation
 - one supervisor packet would otherwise become too overloaded to stay clear
+
+There is no universal default thread count.
+Choose the smallest shape that matches the real task.
 
 ## 2. Verdict classification
 

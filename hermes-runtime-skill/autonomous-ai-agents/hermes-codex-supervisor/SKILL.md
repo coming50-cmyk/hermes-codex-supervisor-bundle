@@ -17,9 +17,11 @@ Use this skill when Hermes should supervise Codex instead of making the user rel
 ## What this skill is for
 
 - Turn one goal into a bounded Codex execution campaign
-- Decide whether the work should stay single-threaded or become multi-threaded
+- Decide the execution shape and thread count from the actual task instead of hardcoding one split
 - Launch Codex workers in separate worktrees or directories
 - Keep a supervisor status board
+- Report current progress back to the user
+- Answer progress, direction, and detail questions from current truth instead of stale memory
 - Rerun real validation before closing
 - Merge results and truth-sync updates
 
@@ -57,6 +59,7 @@ Then read:
 - `references/worker-packet-template.md`
 - `references/supervisor-board-template.md`
 - `references/campaign-rounds.md`
+- `references/user-reporting-protocol.md`
 - `references/escalation-boundaries.md`
 - `references/decision-matrix.md`
 - `references/merge-checklist.md`
@@ -101,7 +104,7 @@ Correct handoff interpretation:
 
 ## Execution mode
 
-Choose one mode first. Do not improvise thread count later.
+Choose one mode first. Do not improvise thread count later, and do not hardcode four-thread or six-thread as the only valid shape.
 
 ### `direct`
 
@@ -121,7 +124,7 @@ Use when:
 
 ### `four-thread`
 
-Default for substantial project work:
+Use when the task naturally splits into:
 
 - Thread A: truth freeze, boundaries, guardrails
 - Thread B: main implementation lane 1
@@ -135,6 +138,9 @@ Only use when one of these is true:
 - the user explicitly asked for six threads
 - accepted project truth already uses six threads
 - there are three independent implementation lanes plus dedicated acceptance and pack-sync work
+
+There is no universal default thread count.
+Pick the smallest shape that matches the real coupling and validation needs.
 
 ## Core rules
 
@@ -217,6 +223,31 @@ process(action="log", session_id="<id>")
 ```
 
 If Codex asks a question that can be answered from current project truth, answer it directly through `process(action="submit", ...)`. Do not forward simple relay questions to the user.
+
+### 6. Report to the user from live truth
+
+Hermes is also the user-facing reporting layer during execution.
+
+When the user asks about:
+
+- current progress
+- current direction
+- why the task was split this way
+- what one thread changed
+- what is still blocked
+
+Hermes must first reread the nearest live truth surfaces before answering:
+
+1. active `AGENTS.md`
+2. active workspace or project `PLANS.md`
+3. current `STATUS` files or supervisor board
+4. latest acceptance, dry-run, smoke, or test evidence
+5. project record when it contains the latest frozen decision
+
+Do not answer these questions from Hermes' own memory cache alone.
+Do not treat yesterday's summary as today's state.
+Do not upgrade a worker's prose summary into final fact without checking artifacts.
+Use `references/user-reporting-protocol.md` whenever the question is about current progress, direction, detail, blockers, or completion.
 
 ## Supervisor board
 

@@ -23,6 +23,8 @@ Forbidden scope:
 
 Required outputs:
 - <code, docs, tests, runbook, report, status updates>
+- <relay-safe summary Hermes can tell the user>
+- <evidence basis for that summary>
 
 Validation requirements:
 - <exact commands>
@@ -34,11 +36,15 @@ Blocker behavior:
 - do not stop just because one dependency is missing
 
 Reply format:
-1. what changed
-2. what was run
-3. current result
-4. remaining blockers
-5. most important files
+1. current status
+2. what changed
+3. what was run
+4. current result
+5. relay_safe_summary
+6. evidence_basis
+7. fresh_as_of
+8. remaining blockers
+9. most important files
 ```
 
 If the campaign is iterative, append:

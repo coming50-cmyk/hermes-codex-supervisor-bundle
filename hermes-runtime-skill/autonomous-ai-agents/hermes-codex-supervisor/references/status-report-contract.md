@@ -24,14 +24,17 @@ Every worker update should include:
 2. what changed
 3. what was run
 4. current result
-5. remaining blockers
-6. most important files
+5. `relay_safe_summary`
+6. `evidence_basis`
+7. `fresh_as_of`
+8. remaining blockers
+9. most important files
 
 For multi-round work, add:
 
-7. `round_now`
-8. `round_target`
-9. `continue_next_round = yes/no`
+10. `round_now`
+11. `round_target`
+12. `continue_next_round = yes/no`
 
 ## 3. Supervisor board fields
 
@@ -40,6 +43,8 @@ Hermes should track each thread with:
 - thread name
 - owned scope
 - current status
+- relay-safe summary
+- evidence basis
 - last meaningful update
 - validation state
 - blocker owner
@@ -79,3 +84,22 @@ When a worker reports `verifying`, the reply must name the command or script bei
 When a worker reports `passed`, the reply must name the exact validation surface that went green.
 
 If either is missing, Hermes should downgrade the claim until evidence is supplied.
+
+## 7. User-facing reporting rule
+
+When Hermes reports to the user or answers progress, direction, or detail questions, the reply must be grounded in the current live surfaces, not in Hermes' own stale memory.
+
+Minimum read set before answering:
+
+1. active plan
+2. current `STATUS` files or supervisor board
+3. latest acceptance, smoke, dry-run, or test evidence when verification is mentioned
+4. latest project decision record if direction or scope is mentioned
+
+Forbidden reporting behavior:
+
+- answering only from memory
+- treating an older round summary as current state
+- reporting a worker claim as fact without evidence
+- reporting planned work as already delivered
+- omitting that the answer is only a last confirmed state when freshness is stale
